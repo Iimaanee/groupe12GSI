@@ -1,0 +1,300 @@
+/* Importing Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+/* Root variables */
+:root {
+  --dk-gray-100: #f5f5f5; /* Blanc cassé */
+  --dk-gray-200: #e0e0e0; /* Gris clair */
+  --dk-gray-300: #d1d5db; /* Gris moyen */
+  --dk-gray-400: #9ca3af; /* Gris foncé */
+  --dk-gray-500: #6b7280; /* Gris très foncé */
+  --dk-gray-600: #4b5563; /* Gris anthracite */
+  --dk-gray-700: #374151; /* Gris très sombre */
+  --dk-gray-800: #1f2937; /* Gris noir */
+  --dk-gray-900: #111827; /* Noir */
+  --dk-dark-bg: #5d4037; /* Marron foncé */
+  --dk-darker-bg: #4e342e; /* Marron plus foncé */
+  --navbar-bg-color: #5d4037; /* Marron foncé */
+  --sidebar-bg-color: #4e342e; /* Marron plus foncé */
+  --sidebar-width: 250px;
+  --sidebar-expanded-width: 230px;
+  --sidebar-collapsed-width: 100px;
+  --sidebar-header-bg: #5d4037; /* Marron foncé */
+  --nav-link-color: #d7ccc8; /* Beige clair */
+  --nav-link-active-bg: #6d4c41; /* Marron moyen */
+  --dropdown-menu-bg: #6d4c41; /* Marron moyen */
+  --dropdown-item-color: #d7ccc8; /* Beige clair */
+  --dropdown-item-active-bg: #8d6e63; /* Marron plus clair */
+  --sidebar-separator-bg: #a1887f; /* Beige marron */
+  --logo-separator-height: 60px;
+  --sidebar-item-height: 50px;
+  --submenu-item-height: 45px;
+}
+
+/* General styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: var(--dk-gray-100); /* Blanc cassé */
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Wrapper */
+#wrapper {
+  margin-left: var(--sidebar-width);
+  padding-top: 60px; /* Ajouté pour éviter le chevauchement avec la barre de navigation */
+  transition: margin-left 0.3s ease-in-out;
+}
+
+#wrapper.fullwidth {
+  margin-left: 0;
+}
+
+/* Sidebar */
+.sidebar {
+  font-size: 0.925rem;
+  background-color: var(--sidebar-bg-color); /* Marron plus foncé */
+  width: var(--sidebar-width);
+  height: 100vh; /* Hauteur totale de la vue */
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 9999999;
+  overflow-y: auto; /* Active le défilement vertical */
+  transition: width 0.3s ease;
+}
+
+.sidebar.collapsed {
+  width: var(--sidebar-collapsed-width);
+}
+
+.sidebar .close-aside {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  cursor: pointer;
+  color: var(--nav-link-color); /* Beige clair */
+}
+
+.sidebar .sidebar-header {
+  background-color: var(--sidebar-header-bg); /* Marron foncé */
+  border-bottom: 1px solid var(--nav-link-active-bg); /* Marron moyen */
+  padding: 15px;
+  text-align: center;
+}
+
+.sidebar .sidebar-header h5 a,
+.sidebar .sidebar-header p {
+  color: var(--nav-link-color); /* Beige clair */
+  font-size: 0.825rem;
+}
+
+.sidebar ul > li > a {
+  color: var(--nav-link-color); /* Beige clair */
+  text-decoration: none;
+  padding: 10px 15px;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.sidebar ul > li > a:hover {
+  background-color: var(--nav-link-active-bg); /* Marron moyen */
+  color: #ffffff; /* Blanc */
+  transform: translateX(5px);
+}
+
+/* Menu items */
+#sidebar-container .list-group a {
+  height: var(--sidebar-item-height);
+  color: var(--nav-link-color); /* Beige clair */
+  padding: 10px 15px; /* Ajout de padding pour les liens */
+  display: block; /* Assure que les liens occupent toute la largeur */
+}
+
+#sidebar-container .list-group a:hover {
+  background-color: var(--nav-link-active-bg); /* Marron moyen */
+  color: #ffffff; /* Blanc */
+}
+
+/* Submenu items */
+#sidebar-container .list-group li.list-group-item {
+  background-color: var(--sidebar-bg-color); /* Marron plus foncé */
+}
+
+#sidebar-container .list-group .sidebar-submenu a {
+  height: var(--submenu-item-height);
+  padding-left: 30px;
+}
+
+/* Separators */
+.sidebar-separator-title,
+.sidebar-separator,
+.logo-separator {
+  background-color: var(--sidebar-separator-bg); /* Beige marron */
+}
+
+.sidebar-separator-title {
+  height: 35px;
+}
+
+.sidebar-separator {
+  height: 25px;
+}
+
+.logo-separator {
+  height: var(--logo-separator-height);
+}
+
+/* Sidebar Footer */
+.sidebar-footer {
+  background-color: var(--sidebar-header-bg); /* Marron foncé */
+  text-align: center;
+  padding: 10px;
+  border-top: 1px solid var(--nav-link-active-bg); /* Marron moyen */
+  position: sticky;
+  bottom: 0;
+  z-index: 1000; /* Assure que le footer est au-dessus du contenu */
+}
+
+/* Navbar */
+.navbar {
+  border: none;
+  background-color: var(--navbar-bg-color); /* Marron foncé */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  z-index: 1000;
+}
+
+.navbar .dropdown-menu {
+  right: auto;
+  left: 0;
+}
+
+.navbar .navbar-nav > li > a {
+  color: var(--nav-link-color); /* Beige clair */
+  line-height: 55px;
+  padding: 0 10px;
+}
+
+.navbar .navbar-nav > li > a:focus,
+.navbar .navbar-nav > li > a:hover {
+  color: #ffffff; /* Blanc */
+}
+
+.navbar .navbar-nav > .open > a,
+.navbar .navbar-nav > .open > a:focus,
+.navbar .navbar-nav > .open > a:hover {
+  background-color: transparent;
+  color: #fff;
+}
+
+.navbar .navbar-brand:focus,
+.navbar .navbar-brand:hover {
+  color: #fff;
+}
+
+.navbar > .container .navbar-brand,
+.navbar > .container-fluid .navbar-brand {
+  margin: 0;
+}
+
+@media (max-width: 767px) {
+  .navbar > .container-fluid .navbar-brand {
+    margin-left: 15px;
+  }
+
+  .navbar .navbar-nav > li > a {
+    padding-left: 0;
+  }
+
+  .navbar-nav {
+    margin: 0;
+  }
+
+  .navbar .navbar-collapse,
+  .navbar .navbar-form {
+    border: none;
+  }
+}
+
+.navbar .navbar-nav > li > a {
+  float: left;
+}
+
+.navbar .navbar-nav > li > a > span:not(.caret) {
+  background-color: #e74c3c;
+  border-radius: 50%;
+  height: 25px;
+  width: 25px;
+  padding: 2px;
+  font-size: 11px;
+  position: relative;
+  top: -10px;
+  right: 5px;
+}
+
+.dropdown-menu > li > a {
+  padding-top: 5px;
+  padding-right: 5px;
+}
+
+.navbar .navbar-nav > li > a > i {
+  font-size: 18px;
+}
+
+/* Styles pour la barre de navigation */
+.custom-navbar {
+  background-color: var(--navbar-bg-color); /* Marron foncé */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre légère */
+}
+
+.navbar-brand {
+  font-size: 26px;
+  color: var(--nav-link-color); /* Beige clair */
+  font-weight: 600; /* Police semi-gras */
+}
+
+.navbar-brand:hover {
+  color: #ffffff; /* Blanc au survol */
+}
+
+.navbar-toggler {
+  color: var(--nav-link-color); /* Beige clair */
+}
+
+.navbar-toggler:hover {
+  color: #ffffff; /* Blanc au survol */
+}
+
+/* Styles pour les cartes du tableau de bord */
+.card {
+  background-color: #ffffff; /* Blanc */
+  border: 1px solid #e0e0e0; /* Gris clair */
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.custom-navbar {
+  background-color: var(--navbar-bg-color); /* Marron foncé */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre légère */
+  padding: 5px 0; /* Réduire le padding pour monter la barre */
+  margin-top: -30px; /* Monter la barre un peu plus haut */
+}
