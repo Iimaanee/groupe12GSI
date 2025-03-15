@@ -43,11 +43,12 @@ from transactions.models import Sale
 from .models import Category, Item, Delivery
 from .forms import ItemForm, CategoryForm, DeliveryForm
 from .tables import ItemTable
-@login_required
+
+
 def home(request):
     return render(request, 'store/home.html')
 
-
+@login_required
 def dashboard(request):
     profiles = Profile.objects.all()
     Category.objects.annotate(nitem=Count("item"))
