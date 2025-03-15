@@ -5,7 +5,7 @@ from store.views import home  # Importez la vue home
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),  # Page d'accueil
-    path('', include('store.urls')),
+    path('store/', include('store.urls')),
     path('staff/', include('accounts.urls')),
     path('transactions/', include('transactions.urls')),
     path('accounts/', include('accounts.urls')),
